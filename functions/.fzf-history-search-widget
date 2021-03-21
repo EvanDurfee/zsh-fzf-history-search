@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+# Standard function opts
+emulate -L zsh
+setopt extended_glob warn_create_global typeset_silent \
+		no_short_loops rc_quotes no_auto_pushd
+
+# Initialize a fuzzy history search with the line buffer, then update the
+# buffer with the result
+BUFFER=$(fzf-history-search "$BUFFER")
+zle end-of-line

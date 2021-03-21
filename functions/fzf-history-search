@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+# Standard function opts
+emulate -L zsh
+setopt extended_glob warn_create_global typeset_silent \
+		no_short_loops rc_quotes no_auto_pushd
+
+# Search the shell history via fzf with the initial query
+local query_string="$@"
+history -t '%Y-%m-%d %H:%M:%S' 0 \
+		| grep -v 1969 \
+		| fzf +s +m -x --tac -e -q "$query_string" \
+		| awk '{print substr($0, index($0, $4))}'
