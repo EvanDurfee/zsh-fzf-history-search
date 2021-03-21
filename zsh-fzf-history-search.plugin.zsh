@@ -15,6 +15,3 @@ autoload -Uz -- fzf-history-search .fzf-history-search-widget
 
 # Create a zle widget
 zle -N fzf-history-search .fzf-history-search-widget
-
-# # Set up the key binding
-# bindkey '^r' fzf-history-search
